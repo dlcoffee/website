@@ -5,9 +5,9 @@ const About = () => {
   return (
     <article className="post">
       <div className="post-content">
-        <h2 class="bio-heading">Hi!</h2>
+        <h2 className="bio-heading">Hi!</h2>
 
-        <div class="bio">
+        <div className="bio">
           <p>
             I'm a full stack engineer with a passion for web technologies. I'm a
             believer in collaboration, unit testing, and convention over
