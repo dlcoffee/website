@@ -70,8 +70,8 @@ p {
   }
 }
 
-i {
-  &.fa {
+svg {
+  &.svg-inline--fa {
     transition: color 0.1s linear;
 
     &:hover {
@@ -221,16 +221,16 @@ ol {
 }
 
 .social-media-list {
-  text-align: center;
+  display: flex;
+  height: $spacing-unit-widest;
+  justify-content: center;
   margin-bottom: 0;
+  text-align: center;
 }
 
 .social-media-item {
-  display: inline-block;
-  height: $spacing-unit-widest;
+  align-items: center;
+  display: flex;
+  list-style: none;
   margin: 0 $spacing-unit;
-
-  i.fa {
-    line-height: $spacing-unit-widest;
-  }
 }
