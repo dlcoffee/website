@@ -10,6 +10,10 @@ const Header = () => {
           <a className="page-link">home</a>
         </Link>
 
+        <Link href="/about">
+          <a className="page-link">about</a>
+        </Link>
+
         <Link href="/resume">
           <a className="page-link">resume</a>
         </Link>

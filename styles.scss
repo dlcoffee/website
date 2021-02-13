@@ -1,6 +1,8 @@
 $site-width: 700px;
 
 $spacing-unit: 15px;
+$spacing-unit-narrowest: $spacing-unit / 4;
+$spacing-unit-narrower: $spacing-unit / 3;
 $spacing-unit-narrow: $spacing-unit / 2;
 $spacing-unit-wide: $spacing-unit * 2;
 $spacing-unit-wider: $spacing-unit * 3;
@@ -165,6 +167,10 @@ ol {
 .site-header {
   margin-top: $spacing-unit-wide;
   padding: 1rem 1rem 0 1rem;
+}
+
+.page-link {
+  margin-right: $spacing-unit-narrowest;
 }
 
 .post-content {
