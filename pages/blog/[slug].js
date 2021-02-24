@@ -1,13 +1,15 @@
 import hydrate from 'next-mdx-remote/hydrate'
 
+import Layout from '../../components/Layout'
+
 import { getFiles, getFileBySlug } from '../../lib/mdx'
-import Test from '../../components/Test'
 
-const components = { Test }
+// TODO: set up MDX components
+const components = {}
 
-export default function TestPage({ source }) {
+export default function BlogPost({ source }) {
   const content = hydrate(source, { components })
-  return <div className="wrapper">{content}</div>
+  return <Layout>{content}</Layout>
 }
 
 export async function getStaticPaths() {
@@ -16,6 +18,7 @@ export async function getStaticPaths() {
   return {
     paths: posts.map((p) => ({
       params: {
+        // use the post/file name as the slug, without the `.mdx`
         slug: p.replace(/\.mdx/, ''),
       },
     })),
