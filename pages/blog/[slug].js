@@ -7,9 +7,20 @@ import { getFiles, getFileBySlug } from '../../lib/mdx'
 // TODO: set up MDX components
 const components = {}
 
-export default function BlogPost({ source }) {
+export default function BlogPost({ source, frontMatter }) {
   const content = hydrate(source, { components })
-  return <Layout>{content}</Layout>
+  const { title, date, categories } = frontMatter
+
+  return (
+    <Layout>
+      <div>
+        <h1>{title}</h1>
+        <h2>{new Date(date).toISOString()}</h2>
+        <p>{categories}</p>
+      </div>
+      {content}
+    </Layout>
+  )
 }
 
 export async function getStaticPaths() {
@@ -27,7 +38,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { mdxSource } = await getFileBySlug(params.slug)
+  const { mdxSource, frontMatter } = await getFileBySlug(params.slug)
 
-  return { props: { source: mdxSource } }
+  return { props: { source: mdxSource, frontMatter } }
 }
