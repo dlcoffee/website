@@ -1,41 +1,30 @@
 import Head from 'next/head'
 import Layout from '../components/Layout'
 
-const posts = []
+import PostPreview from '../components/PostPreview'
 
-const Index = (props) => {
+import { getAllFilesFrontMatter } from '../lib/mdx'
+
+const Index = ({ posts }) => {
   return (
-    <div className="page-content">
-      <div className="wrapper">
-        <div className="home">
-          <ul className="post-list">
-            {posts.map((post) => {
-              return (
-                <li className="short-post">
-                  <header className="post-header">
-                    <h2 className="post-title">
-                      <a
-                        className="post-link"
-                        href="{{ post.url | relative_url }}"
-                      ></a>
-                    </h2>
-
-                    <p className="post-meta">meta</p>
-                  </header>
-
-                  <p className="excerpt">exceprt</p>
-
-                  <p className="read-more">
-                    <a href="{{ post.url | relative_url }}">Read more...</a>
-                  </p>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
+    <div className="wrapper">
+      <div className="home">
+        <ul className="post-list">
+          {posts.map((frontMatterPost) => {
+            return (
+              <PostPreview key={frontMatterPost.title} {...frontMatterPost} />
+            )
+          })}
+        </ul>
       </div>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const posts = await getAllFilesFrontMatter()
+
+  return { props: { posts } }
 }
 
 export default function WrappedIndex(props) {
