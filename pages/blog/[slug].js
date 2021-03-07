@@ -1,6 +1,6 @@
 import hydrate from 'next-mdx-remote/hydrate'
 
-import Layout from '../../components/Layout'
+import BlogLayout from '../../components/BlogLayout'
 
 import { getFiles, getFileBySlug } from '../../lib/mdx'
 
@@ -11,16 +11,7 @@ export default function BlogPost({ source, frontMatter }) {
   const content = hydrate(source, { components })
   const { title, date, categories } = frontMatter
 
-  return (
-    <Layout>
-      <div>
-        <h1>{title}</h1>
-        <h2>{new Date(date).toISOString()}</h2>
-        <p>{categories}</p>
-      </div>
-      {content}
-    </Layout>
-  )
+  return <BlogLayout frontMatter={frontMatter}>{content}</BlogLayout>
 }
 
 export async function getStaticPaths() {

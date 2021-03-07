@@ -9,7 +9,14 @@ export async function getFileBySlug(slug) {
   const source = fs.readFileSync(path.join(root, 'blog', `${slug}.mdx`), 'utf8')
 
   const { data, content } = matter(source)
-  const mdxSource = await renderToString(content)
+  const mdxSource = await renderToString(content, {
+    mdxOptions: {
+      remarkPlugins: [
+        require('remark-autolink-headings'),
+        require('remark-slug'),
+      ],
+    },
+  })
 
   return {
     mdxSource,
