@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const PostPreview = ({ title, summary, date, slug }) => {
+const PostPreview = ({ title, excerpt, date, slug }) => {
   const time = new Date(date).toLocaleString('default', {
     month: 'short',
     day: 'numeric',
@@ -20,7 +20,7 @@ const PostPreview = ({ title, summary, date, slug }) => {
         <p className="post-meta">{time}</p>
       </header>
 
-      <p className="excerpt">exceprt</p>
+      <p className="excerpt">{excerpt}</p>
 
       <p className="read-more">
         <Link href={`/blog/${slug}`}>Read more...</Link>

@@ -5,6 +5,10 @@ import renderToString from 'next-mdx-remote/render-to-string'
 
 const root = process.cwd()
 
+function firstFourLines(file, options) {
+  file.excerpt = file.content.split('\n').slice(0, 4).join(' ')
+}
+
 export async function getFileBySlug(slug) {
   const source = fs.readFileSync(path.join(root, 'blog', `${slug}.mdx`), 'utf8')
 
@@ -36,11 +40,12 @@ export async function getAllFilesFrontMatter() {
 
   return files.reduce((allPosts, postSlug) => {
     const source = fs.readFileSync(path.join(root, 'blog', postSlug), 'utf8')
-    const { data } = matter(source)
+    const { data, excerpt } = matter(source, { excerpt: firstFourLines })
 
     return [
       {
         ...data,
+        excerpt: excerpt || null,
         slug: postSlug.replace('.mdx', ''),
       },
       ...allPosts,

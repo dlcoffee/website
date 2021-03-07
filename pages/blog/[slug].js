@@ -9,8 +9,6 @@ const components = {}
 
 export default function BlogPost({ source, frontMatter }) {
   const content = hydrate(source, { components })
-  const { title, date, categories } = frontMatter
-
   return <BlogLayout frontMatter={frontMatter}>{content}</BlogLayout>
 }
 
