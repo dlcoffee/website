@@ -21,16 +21,16 @@ So, if you set `height: 20px`, you're telling the browser that you want the **co
 
 In this example, both divs contain similar styles.
 
-{% highlight css %}
+```css
 div {
-width: 200px;
-height: 200px;
+  width: 200px;
+  height: 200px;
 
-margin: 20px;
-padding: 10px;
-border: 5px solid #FFE66D;
+  margin: 20px;
+  padding: 10px;
+  border: 5px solid #ffe66d;
 }
-{% endhighlight %}
+```
 
 The difference is, the one on the left has `box-sizing: content-box;` and the one on the right has `box-sizing: border-box`. The CSS markup is telling the divs to have a height of `200px` and a width of `200px`. However, because of the `box-sizing` difference, they get rendered differently. The `content-box` gets rendered with `230px` (200 + 10 + 10 + 5 + 5), while the `border-box` makes the content area smaller to account for a total width and height of `200px`. My suggestion is to use `border-box` for a more intuitive behavior and avoid unnecessary cognitive load to account for borders and paddings when using `content-box`.
 
