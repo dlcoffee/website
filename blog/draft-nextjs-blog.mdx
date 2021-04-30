@@ -4,7 +4,53 @@ date: '2021-04-17'
 categories: react nextjs blog
 ---
 
-This is a draft.
+I decided that my personal website needed some TLC and wanted it to be
+a bit more reflective of who I am in 2021. I no longer work with ruby
+or angularjs on a daily basis at work. I have been living in javascript
+land for the past couple of years, and consider myself to know enough to
+be dangerous with it.
+
+With that said, I no longer felt that a website built on [Jekyll](https://jekyllrb.com/)
+was interesting to me. I was no longer thinking in ruby, the dependencies were out
+of date, and I would've preferred to write my blog posts in markdown.
+[Next.js](https://nextjs.org/) came up on the scene and I've been very interested
+in the work that's been going on in this space, so I decided to migrate my blog to
+it.
+
+I work with Next.js applications daily at work, but I had never really explored
+the "other" side of it, where I could utilize [MDX](https://mdxjs.com/) and static
+page generation. The applications at work are behind authentication, so there
+wasn't a real use case for statically generated pages.
+
+## Approach
+
+I didn't want to deal with long standing branch in the old repo, so I ended
+up creating a new repo, freshly init with Next.js.
+
+I knew that I didn't want to transport everything over at once. My goal
+was to slowly get the new blog as close to 1:1 as possible before I
+started to even think about new content and features.
+
+## How
+
+I started off just with the basic Next.js starter app and deployed that
+on Vercel. I wanted to deploy early and often.
+
+I then needed to figure out how to transfer the font icons from fontawseome
+over for my footer. I had to do a bit of googling, because my old approach
+was no longer working, and FA had been upgraded a few times.
+
+Next, I wanted to get the basic content of my blogposts into markdown. I knew
+about MDX, but I hadn't used it before. I had to learn how to connect
+MDX and frontmatter together.
+
+I tackled layout and colors next. I had to think in react (components).
+
+I had to figure out excerpts. Luckily, there's a way to do it with gray matter.
+Except it didn't handle formatting very well. Oh well, that's a ticket in
+my todo list.
+
+Syntax highlighting using prism.
 
 ## reason
 
