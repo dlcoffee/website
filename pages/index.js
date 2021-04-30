@@ -6,11 +6,15 @@ import PostPreview from '../components/PostPreview'
 import { getAllFilesFrontMatter } from '../lib/mdx'
 
 const Index = ({ posts }) => {
+  const sortedPosts = posts.sort(
+    (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
+  )
+
   return (
     <div className="wrapper">
       <div className="home">
         <ul className="post-list">
-          {posts.map((frontMatterPost) => {
+          {sortedPosts.map((frontMatterPost) => {
             return (
               <PostPreview key={frontMatterPost.title} {...frontMatterPost} />
             )

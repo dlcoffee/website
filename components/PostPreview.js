@@ -5,7 +5,7 @@ const PostPreview = ({ title, excerpt, date, slug }) => {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
-    timeZone: 'America/Los_Angeles', // TODO: get display correct
+    timeZone: 'UTC',
   })
 
   return (
