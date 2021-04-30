@@ -14,9 +14,9 @@ const Header = () => {
           <a className="page-link">about</a>
         </Link>
 
-        <Link href="/resume">
-          <a className="page-link">resume</a>
-        </Link>
+        <a href="/resume.pdf" target="_blank" className="page-link">
+          resume
+        </a>
       </nav>
     </header>
   )
