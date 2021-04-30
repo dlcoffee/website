@@ -44,29 +44,29 @@ Once Angular reaches the last watcher, it's not quite done. It will run through 
 
 The pseudocode for `$apply()` is:
 
-{% highlight javascript %}
+```javascript
 function $apply(expr) {
   try {
-    return $eval(expr);
+    return $eval(expr)
   } catch (e) {
-    $exceptionHandler(e);
+    $exceptionHandler(e)
   } finally {
-    $root.$digest();
+    $root.$digest()
+  }
 }
-}
-{% endhighlight %}
+```
 
 If you're trying to run code outside of an Angular context that is updating something in an Angular context, you might want to use call `$apply()`. For example, if you wanted to use `setTimeout`, you would call `$apply()` so that values are updated in the Angular context.
 
-{% highlight javascript %}
-var callback = function() {
-// update a value in Angular context
-};
+```javascript
+var callback = function () {
+  // update a value in Angular context
+}
 
-setTimeout(function() {
-scope.apply(callback);
-}, 500);
-{% endhighlight %}
+setTimeout(function () {
+  scope.apply(callback)
+}, 500)
+```
 
 Generally, you do not need to call `$apply()` manually. The example above could be achieve the same effect by calling Angular's `$timeout` instead of `setTimeout`.
 

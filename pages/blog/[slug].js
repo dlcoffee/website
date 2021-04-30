@@ -1,11 +1,19 @@
+import Prism from 'prism-react-renderer/prism'
 import hydrate from 'next-mdx-remote/hydrate'
 
 import BlogLayout from '../../components/BlogLayout'
+import CodeBlock from '../../components/CodeBlock'
 
 import { getFiles, getFileBySlug } from '../../lib/mdx'
 
-// TODO: set up MDX components
-const components = {}
+// react-prism-render only comes with a subset of languages
+;(typeof global !== 'undefined' ? global : window).Prism = Prism
+
+require('prismjs/components/prism-ruby')
+
+const components = {
+  code: CodeBlock,
+}
 
 export default function BlogPost({ source, frontMatter }) {
   const content = hydrate(source, { components })

@@ -9,30 +9,30 @@ There are multiple ways of defining methods in Ruby. The most popular is by usin
 
 ### A Baby example
 
-{% highlight ruby linenos %}
+```ruby linenos
 class Baby
 
-CRYING = 0
-POOPING = 1
-SLEEPING = 2
+  CRYING = 0
+  POOPING = 1
+  SLEEPING = 2
 
-attr_writer :status
+  attr_writer :status
 
-def initialize
-@status = CRYING
-end
+  def initialize
+    @status = CRYING
+  end
 
-def sleeping?
-status == SLEEPING
-end
+  def sleeping?
+    status == SLEEPING
+  end
 
-def pooping?
-status == POOPING
-end
+  def pooping?
+    status == POOPING
+  end
 
-def crying?
-status == CRYING
-end
+  def crying?
+    status == CRYING
+  end
 
 end
 
@@ -49,7 +49,7 @@ baby.crying?
 
 baby.sleeping?
 #=> true
-{% endhighlight %}
+```
 
 The defined methods are all very similar, and it'd be great if we could DRY it up somehow. Luckily, we can! We can use **metaprogramming** to write some code that will generate our `sleeping?`, `pooping?`, and `crying?` methods.
 
@@ -57,24 +57,24 @@ The defined methods are all very similar, and it'd be great if we could DRY it u
 
 We can use `define_method` to dynamically define methods in Ruby. `define_method` is used by passing a name of the method we want to define, and a block that will be the body for that method. Our `Baby` class can be refactored into:
 
-{% highlight ruby linenos %}
+```ruby linenos
 class Baby
 
-CRYING = 0
-POOPING = 1
-SLEEPING = 2
+  CRYING = 0
+  POOPING = 1
+  SLEEPING = 2
 
-attr_writer :status
+  attr_writer :status
 
-def initialize
-@status = CRYING
-end
+  def initialize
+    @status = CRYING
+  end
 
-[:crying, :pooping, :sleeping].each do |status|
-define_method "#{status}?" do
-status == Babe.const_get(status.upcase)
-end
-end
+  [:crying, :pooping, :sleeping].each do |status|
+    define_method "#{status}?" do
+      status == Babe.const_get(status.upcase)
+    end
+  end
 
 end
 
@@ -84,7 +84,7 @@ baby.crying?
 
 baby.sleeping?
 #=> false
-{% endhighlight %}
+```
 
 Isn't that much nicer? We got rid of redundancy and made it a lot easier to write more status methods, such as `laughing?` or `hiccuping?`.
 

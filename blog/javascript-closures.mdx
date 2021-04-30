@@ -14,40 +14,40 @@ An important characteristic of inner functions is that they have access to the o
 
 ### Examples
 
-{% highlight javascript %}
-var addTo = function(x) {
-var addIt = function(y) {
-return x + y;
+```javascript
+var addTo = function (x) {
+  var addIt = function (y) {
+    return x + y
+  }
+
+  return addIt
 }
 
-return addIt;
-};
+var addToFive = addTo(5) // returns a function
+addToFive(1) // returns 6
 
-var addToFive = addTo(5); // returns a function
-addToFive(1); // returns 6
-
-var addToTen = addTo(10); // returns a function
-addToTen(3); // returns 13
-{% endhighlight %}
+var addToTen = addTo(10) // returns a function
+addToTen(3) // returns 13
+```
 
 When we call `addTo()`, we create a new scope that has a value for `x`. Along with its inner function, `addIt`, we have a closure.
 
-{% highlight javascript %}
-var createCounter = function() {
-var count = 0;
+```javascript
+var createCounter = function () {
+  var count = 0
 
-var increment = function() {
-count = count + 1;
+  var increment = function () {
+    count = count + 1
+  }
+
+  return increment
 }
 
-return increment;
-};
+var counter = createCounter() // return a function
 
-var counter = createCounter(); // return a function
-
-counter(); // returns 1
-counter(); // returns 2
-{% endhighlight %}
+counter() // returns 1
+counter() // returns 2
+```
 
 In this example, we create a counter that increments everytime we call it. We don't have access to the `count` variable, but the inner function `increment`, does. Notice that it keeps its context, although we've only called `createCounter` once.
 
