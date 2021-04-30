@@ -1,5 +1,6 @@
 import Prism from 'prism-react-renderer/prism'
 import hydrate from 'next-mdx-remote/hydrate'
+import { CodePen } from 'mdx-embed'
 
 import BlogLayout from '../../components/BlogLayout'
 import CodeBlock from '../../components/CodeBlock'
@@ -13,6 +14,7 @@ require('prismjs/components/prism-ruby')
 
 const components = {
   code: CodeBlock,
+  CodePen,
 }
 
 export default function BlogPost({ source, frontMatter }) {
