@@ -170,10 +170,16 @@ ol {
 }
 
 .page-link {
-  margin-right: $spacing-unit-narrowest;
+  margin-right: $spacing-unit-narrow;
 }
 
 .post-content {
+  code {
+    background: rgb(244, 243, 250) none repeat scroll 0% 0%;
+    border-radius: 3px;
+    padding: 2px 4px;
+  }
+
   h1,
   h2,
   h3 {

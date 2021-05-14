@@ -1,74 +1,150 @@
 ---
-title: 'DRAFT: Nextjs Blog Post'
-date: '2021-04-17'
-categories: react nextjs blog
+title: 'Jekyll to Next.js'
+date: '2021-05-13'
+categories: react nextjs blog jekyll
 ---
 
-I decided that my personal website needed some TLC and wanted it to be
-a bit more reflective of who I am in 2021. I no longer work with ruby
-or angularjs on a daily basis at work. I have been living in javascript
-land for the past couple of years, and consider myself to know enough to
-be dangerous with it.
+I decided that my personal website needed some attention and wanted it to be
+a bit more reflective of who I am in 2021. I no longer work with rails
+or angularjs on a daily basis. For the past couple of years, I have been
+doing node and javascript development.
 
 With that said, I no longer felt that a website built on [Jekyll](https://jekyllrb.com/)
 was interesting to me. I was no longer thinking in ruby, the dependencies were out
-of date, and I would've preferred to write my blog posts in markdown.
-[Next.js](https://nextjs.org/) came up on the scene and I've been very interested
-in the work that's been going on in this space, so I decided to migrate my blog to
-it.
+of date, and I prefer to write my blog posts in markdown.
 
-I work with Next.js applications daily at work, but I had never really explored
-the "other" side of it, where I could utilize [MDX](https://mdxjs.com/) and static
-page generation. The applications at work are behind authentication, so there
-wasn't a real use case for statically generated pages.
+I work on [Next.js](https://nextjs.org/) applications at work, and decided it would
+be fun to use it for my new website.
 
 ## Approach
 
 I didn't want to deal with long standing branch in the old repo, so I ended
-up creating a new repo, freshly init with Next.js.
+up creating a new repo, freshly init with `npx create-next-app`
 
-I knew that I didn't want to transport everything over at once. My goal
-was to slowly get the new blog as close to 1:1 as possible before I
-started to even think about new content and features.
+I knew that I didn't want to migrate everything over at once. I'm a fan of
+incremental progress, so my goal was to pick and choose portions of my
+website to port over one at a time.
+
+Once I got to as close to parity as possible, I could start to think about new
+features. I didn't want to get ahead of myself.
 
 ## How
 
-I started off just with the basic Next.js starter app and deployed that
-on Vercel. I wanted to deploy early and often.
+I started off with the basic Next.js starter app and deployed that
+on [Vercel](https://vercel.com/). I wanted to deploy early and often.
 
-I then needed to figure out how to transfer the font icons from fontawseome
-over for my footer. I had to do a bit of googling, because my old approach
-was no longer working, and FA had been upgraded a few times.
+The next thing I wanted to get out of the way was figuring out how to handle
+the icons for the footer. I had used [Font Awesome](https://fontawesome.com/)
+for my previous website, which worked by adding a `<script>` tag and
+using the correct `fa` css classes. I browsed their website to see if there
+was an updated approach with React in mind, and I found they had an official
+React component: https://fontawesome.com/how-to-use/on-the-web/using-with/react
 
-Next, I wanted to get the basic content of my blogposts into markdown. I knew
-about MDX, but I hadn't used it before. I had to learn how to connect
-MDX and frontmatter together.
+It was pretty straightforward from their docs on how to use the components.
+I just needed to import the few icons I needed and added them to the `library`
+from my `_app.js` component.
 
-I tackled layout and colors next. I had to think in react (components).
+```javascript
+// _app.js
 
-I had to figure out excerpts. Luckily, there's a way to do it with gray matter.
-Except it didn't handle formatting very well. Oh well, that's a ticket in
-my todo list.
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
-Syntax highlighting using prism.
+library.add(faGithub)
+```
 
-## reason
+In my `<Footer>` component,
 
-- decided to upgrade personal website
-- wasn't living in ruby land anymore
-- dependencies were very out of date
-- wanted to explore the nextjs blog world
-- use nextjs a lot at work, but in a different way
-- liked markdown, wanted to try out mdx
-- wanted to try out new deployment strategies (vercel)
-- wanted to get everything 1:1 first, then new design
+```jsx
+// Footer.js
 
-## how
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-- used todoist for project tracking (first time)
-- started off with basic nextjs deployment on vercel
-- added new fontawseome, copy pasted sass styling
-- had to learn how to use mdx and how to generate pages
-- added frontmatter
-- worked on nextjs layouts
-- adding excerpts
+const Footer = () => {
+  return (
+    <a href="https://github.com/dlcoffee" title="github">
+      <FontAwesomeIcon icon={['fab', 'github']} size="2x" />
+    </a>
+  )
+}
+```
+
+One of my requirements for the new website was that I wanted to be able to write my blog posts
+in markdown and be able to import React components. Luckily, there's
+[MDX](https://mdxjs.com/) which allows me to write JSX in markdown.
+
+I had heard of MDX before, but I had never worked with it. This proved to a bit
+more work than I had anticipated. In order to get MDX working the way I wanted,
+I needed to:
+
+1. Install MDX packages
+2. Convert existing blog posts to markdown
+3. Figure out how to dynamically generate blog posts + urls
+4. Figure out how to use front matter
+5. Figure out how to handle excerpts
+
+Installing MDX pretty straightforward and converting the _text_ content of my
+blog posts was also easy.
+
+I didn't want create a new page under the `/pages` directory for each blog post,
+so I utilized a combination of Next's `getStaticPaths()` and `getStaticProps()`
+functions along with another library called [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote)
+which allowed me to pull in mdx content through `getStaticProps()`
+
+- `getStaticPaths()` - Specifies **dynamic routes** based on data. I use the name
+  of the post to generate the url slug.
+- `getStaticProps()` - Pulls the correct markdown data to parse based on the slug
+
+```jsx
+// pages/blog/[slug].js
+
+import hydrate from 'next-mdx-remote/hydrate'
+import { getFiles, getFileBySlug } from '../../lib/mdx'
+
+export default function Post({ source }) {
+  const content = hydrate(source)
+  return <div className="wrapper">{content}</div>
+}
+
+export async function getStaticPaths() {
+  const posts = await getFiles()
+
+  return {
+    paths: posts.map((p) => ({
+      params: {
+        slug: p.replace(/\.mdx/, ''),
+      },
+    })),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const { mdxSource } = await getFileBySlug(params.slug)
+
+  return { props: { source: mdxSource } }
+}
+```
+
+Once my blog posts were written in `.mdx` and I could get them loaded
+dynamically, I worked on getting the layout and colors set up correctly.
+This part wasn't too difficult, as I decided to use `Sass` again, as it
+was almost a straight copy/paste from my old repo.
+
+Lastly, for me to feel comfortable switching over to the new website, I
+needed to get my syntax highlighting and embedded scripts to work as before,
+since I have a code snippets and codepen examples to show.
+
+For this, I used a library called [`prism-react-renderer`](https://github.com/FormidableLabs/prism-react-renderer),
+, which allowed me to use a component to output syntax-highlighted code. In combination with MDX,
+this allowed me to reach a level of parity that I was comfortable with. The theme
+was off, but I decided not to make it a blocker for getting the new website up.
+
+## Conclusion
+
+This was a fun project. I kept track of my todo's in an app called [Todoist](https://todoist.com/),
+which kept me focused on the to-do at hand. There are still some fixes that I need to make,
+like getting the excerpts to show up correctly on the home page, but I'll fix it some
+other time.
+
+I'm hoping to write more now that I'm able to use markdown.
