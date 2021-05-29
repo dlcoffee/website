@@ -1,0 +1,44 @@
+---
+title: 'i++ vs ++i'
+date: '2021-05-29'
+categories: programming
+---
+
+This one always trips me up. If the `++` increment is _after_ the operand, then
+it's called a **post increment** (`i++`). If the `++` is _before_ the operand,
+then it's called a **pre increment** (`++i`).
+
+With the **post increment**, the value gets incremented by one, and returns
+the _original_ value.
+
+```javascript linenos
+let i = 2
+let j = i++
+
+console.log({ i, j })
+// { i: 3, j: 2 }
+```
+
+With the **pre increment**, the value gets incremented by one, and returns
+the _new_ value.
+
+```javascript linenos
+let i = 2
+let j = ++i
+
+console.log({ i, j })
+// { i: 3, j: 3 }
+```
+
+They're commonly seen in `for-loop`s where it generally doesn't matter which
+one is used.
+
+```javascript linenos
+for (let i = 0; i < 3; i++) {
+  console.log(i) // outputs 0, 1, 2
+}
+
+for (let j = 0; j < 3; ++j) {
+  console.log(j) // outputs 0, 1, 2
+}
+```
