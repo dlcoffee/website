@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import renderToString from 'next-mdx-remote/render-to-string'
+import { serialize } from 'next-mdx-remote/serialize'
 
 const root = process.cwd()
 
@@ -13,7 +13,7 @@ export async function getFileBySlug(slug) {
   const source = fs.readFileSync(path.join(root, 'blog', `${slug}.mdx`), 'utf8')
 
   const { data, content } = matter(source)
-  const mdxSource = await renderToString(content, {
+  const mdxSource = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [
         require('remark-autolink-headings'),

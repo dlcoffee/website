@@ -9,21 +9,21 @@ const About = () => {
 
         <div className="bio">
           <p>
-            I'm a software engineer with a passion for web technologies. I'm a
-            believer in collaboration, open communication, investing in others,
-            and self-improvement.
+            I&apos;m a software engineer with a passion for web technologies.
+            I&apos;m a believer in collaboration, open communication, investing
+            in others, and self-improvement.
           </p>
 
           <p>
             My initial exposure to HTML/CSS was through a website called{' '}
             <a href="http://www.neopets.com">Neopets</a>. I combined the two to
             create basic designs for my profile for myself and friends, which
-            were mostly rip-offs of others on the website. I didn't write
+            were mostly rip-offs of others on the website. I didn&apos;t write
             another line of code until my freshman year in college. Python was
             my first taste of an actual programming language - and I got hooked.
             I took more CS classes and eventually majored in it. Since then,
-            I've dabbled in many other languages and technologies; my goal is to
-            always be learning.
+            I&apos;ve dabbled in many other languages and technologies; my goal
+            is to always be learning.
           </p>
 
           <p>

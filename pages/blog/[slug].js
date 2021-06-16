@@ -1,5 +1,5 @@
 import Prism from 'prism-react-renderer/prism'
-import hydrate from 'next-mdx-remote/hydrate'
+import { MDXRemote } from 'next-mdx-remote'
 import { CodePen } from 'mdx-embed'
 
 import BlogLayout from '../../components/BlogLayout'
@@ -18,8 +18,11 @@ const components = {
 }
 
 export default function BlogPost({ source, frontMatter }) {
-  const content = hydrate(source, { components })
-  return <BlogLayout frontMatter={frontMatter}>{content}</BlogLayout>
+  return (
+    <BlogLayout frontMatter={frontMatter}>
+      <MDXRemote {...source} components={components} />
+    </BlogLayout>
+  )
 }
 
 export async function getStaticPaths() {
