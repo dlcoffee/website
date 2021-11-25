@@ -2,6 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { serialize } from 'next-mdx-remote/serialize'
+import remarkAutolinkHeadings from 'remark-autolink-headings'
+import remrkSlugh from 'remark-slug'
 
 const root = process.cwd()
 
@@ -15,10 +17,7 @@ export async function getFileBySlug(slug) {
   const { data, content } = matter(source)
   const mdxSource = await serialize(content, {
     mdxOptions: {
-      remarkPlugins: [
-        require('remark-autolink-headings'),
-        require('remark-slug'),
-      ],
+      remarkPlugins: [remarkAutolinkHeadings, remrkSlugh],
     },
   })
 

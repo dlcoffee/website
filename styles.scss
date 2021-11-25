@@ -1,9 +1,11 @@
+@use 'sass:math';
+
 $site-width: 700px;
 
 $spacing-unit: 15px;
-$spacing-unit-narrowest: $spacing-unit / 4;
-$spacing-unit-narrower: $spacing-unit / 3;
-$spacing-unit-narrow: $spacing-unit / 2;
+$spacing-unit-narrowest: math.div($spacing-unit, 4);
+$spacing-unit-narrower: math.div($spacing-unit, 3);
+$spacing-unit-narrow: math.div($spacing-unit, 2);
 $spacing-unit-wide: $spacing-unit * 2;
 $spacing-unit-wider: $spacing-unit * 3;
 $spacing-unit-widest: $spacing-unit * 4;
