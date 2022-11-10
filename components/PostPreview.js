@@ -12,8 +12,8 @@ const PostPreview = ({ title, excerpt, date, slug }) => {
     <li className="short-post">
       <header className="post-header">
         <h2 className="post-title">
-          <Link href={`/blog/${slug}`}>
-            <a className="post-link">{title}</a>
+          <Link href={`/blog/${slug}`} className="post-link">
+            {title}
           </Link>
         </h2>
 
@@ -26,7 +26,7 @@ const PostPreview = ({ title, excerpt, date, slug }) => {
         <Link href={`/blog/${slug}`}>Read more...</Link>
       </p>
     </li>
-  )
+  );
 }
 
 export default PostPreview
