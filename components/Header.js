@@ -6,12 +6,12 @@ const Header = () => {
       <h1 className="blog-title">Daniel Tea</h1>
 
       <nav className="main-nav">
-        <Link href="/">
-          <a className="page-link">home</a>
+        <Link href="/" className="page-link">
+          home
         </Link>
 
-        <Link href="/about">
-          <a className="page-link">about</a>
+        <Link href="/about" className="page-link">
+          about
         </Link>
 
         <a href="/resume.pdf" target="_blank" className="page-link">
@@ -19,7 +19,7 @@ const Header = () => {
         </a>
       </nav>
     </header>
-  )
+  );
 }
 
 export default Header
