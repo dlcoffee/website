@@ -10,10 +10,12 @@ const BlogLayout = ({ children, frontMatter }) => {
     timeZone: 'UTC',
   })
 
+  const pageTitle = `Daniel Tea | ${title}`
+
   return (
     <Layout>
       <Head>
-        <title>Daniel Tea | {title}</title>
+        <title>{pageTitle}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
