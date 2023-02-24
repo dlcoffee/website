@@ -13,7 +13,7 @@ import { getFiles, getFileBySlug } from '../../lib/mdx'
 require('prismjs/components/prism-ruby')
 
 const components = {
-  code: CodeBlock,
+  pre: CodeBlock,
   CodePen,
 }
 
@@ -36,7 +36,7 @@ export async function getStaticPaths() {
       },
     })),
     fallback: false,
-  };
+  }
 }
 
 export async function getStaticProps({ params }) {

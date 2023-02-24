@@ -14,11 +14,19 @@ const LineNo = ({ children }) => {
   )
 }
 
-const CodeBlock = ({ children, className, linenos }) => {
+const CodeBlock = ({ children }) => {
+  if (!children || children.type !== 'code') {
+    return null
+  }
+
+  const {
+    props: { className, children: code = '', linenos },
+  } = children
+
   const language = className.replace(/language-/, '')
 
   return (
-    <Highlight {...defaultProps} code={children.trim()} language={language}>
+    <Highlight {...defaultProps} code={code.trim()} language={language}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
         return (
           <pre
