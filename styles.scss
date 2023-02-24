@@ -243,8 +243,13 @@ ol {
 }
 
 .social-media-item {
+  width: $spacing-unit-wide;
   align-items: center;
   display: flex;
   list-style: none;
   margin: 0 $spacing-unit;
+}
+
+.social-media-item-link {
+  width: 100%;
 }
