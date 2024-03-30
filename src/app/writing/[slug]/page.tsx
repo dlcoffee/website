@@ -18,7 +18,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   )
   return (
     <section className="mx-auto w-full max-w-2xl space-y-4">
-      <article className="prose lg:prose-xl">
+      <article className="prose">
         <CustomMDX source={mdxSource} />
       </article>
     </section>
