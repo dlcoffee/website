@@ -13,7 +13,9 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const { mdxSource, frontMatter } = await getFileBySlug(params.slug)
+  const { mdxSource, frontMatter } = await getFileBySlug(
+    decodeURIComponent(params.slug)
+  )
   return (
     <section className="mx-auto w-full max-w-2xl space-y-4">
       <article className="prose lg:prose-xl">

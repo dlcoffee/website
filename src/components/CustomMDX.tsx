@@ -7,6 +7,7 @@ import UnderlinedNextLink from './UnderlinedNextLink'
 import UnderlinedLink from './UnderlinedLink'
 import CodePen from './CodePen'
 
+// @ts-ignore
 function CustomLink(props) {
   let href = props.href
 
@@ -25,6 +26,7 @@ function CustomLink(props) {
   return <UnderlinedLink target="_blank" rel="noopener noreferrer" {...props} />
 }
 
+// @ts-ignore
 function Code({ children, ...props }) {
   let codeHTML = highlight(children)
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
@@ -45,6 +47,7 @@ export function CustomMDX({ source }: { source: string }) {
           rehypePlugins: [rehypeAutolinkHeadings, rehypeSlug],
         },
       }}
+      // @ts-ignore
       components={components}
     />
   )
