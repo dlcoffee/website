@@ -9,7 +9,7 @@ export default async function Page() {
   return (
     <section className="mx-auto w-full max-w-2xl space-y-4">
       <div className="space-y-2">
-        <p>Here are all the posts I&apos;ve written.</p>
+        <p className="text-sm">Here are all the posts I&apos;ve written.</p>
       </div>
 
       <div className="space-y-4">

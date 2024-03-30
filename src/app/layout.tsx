@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="container p-4 print:p-12 md:p-16">
+        <main className="container p-4 md:p-16 print:p-12">
           <Header></Header>
-          <hr className="border-zinc-400 my-4 mx-auto w-full max-w-2xl"></hr>
+          <hr className="mx-auto my-4 w-full max-w-2xl border-zinc-400"></hr>
           {children}
         </main>
       </body>

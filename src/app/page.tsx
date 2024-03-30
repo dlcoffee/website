@@ -14,7 +14,7 @@ function WorkExperience({
     <div className="flex justify-between">
       <div>
         <h4 className="text font-semibold">{company}</h4>
-        <p className="text-sm">{title}</p>
+        <p className="font-mono text-xs">{title}</p>
       </div>
       <div>
         <Badge>{dates}</Badge>
@@ -27,12 +27,12 @@ export default function Home() {
   return (
     <section className="mx-auto w-full max-w-2xl space-y-4">
       <div className="space-y-2">
-        <p>Welcome to my slice on the internet!</p>
+        <p className="text-sm">Welcome to my slice on the internet!</p>
       </div>
 
       <div className="space-y-2">
         <h3 className="text-xl font-semibold">About Me</h3>
-        <p>
+        <p className="text-sm">
           I&apos;ve been working as a software developer for over a decade. I
           built my first websites on{' '}
           <UnderlinedLink
@@ -55,7 +55,7 @@ export default function Home() {
           .
         </p>
 
-        <p>
+        <p className="text-sm">
           I wrote my first computer program in an &quot;intro to python&quot;
           class as a freshman math major and decided to add computer science to
           my degree. After graduation, I got a job working on a Rails +
@@ -63,13 +63,13 @@ export default function Home() {
           &quot;fullstack&quot; space ever since.
         </p>
 
-        <p>
+        <p className="text-sm">
           In my professional career, I&apos;ve had the opportunity to use many
           different languages and technologies and consider myself a lifelong
           learner.
         </p>
 
-        <p>
+        <p className="text-sm">
           Outside of programming, I&apos;m interested in playing music, drinking
           coffee, catching up on{' '}
           <UnderlinedLink
@@ -83,7 +83,7 @@ export default function Home() {
         </p>
       </div>
 
-      <hr className="border-zinc-300 my-4 mx-auto w-full"></hr>
+      <hr className="mx-auto my-4 w-full border-zinc-300"></hr>
 
       <div className="space-y-2">
         <h3 className="text-xl font-semibold">Work Experience</h3>
@@ -119,7 +119,7 @@ export default function Home() {
         />
       </div>
 
-      <hr className="border-zinc-300 my-4 mx-auto w-full"></hr>
+      <hr className="mx-auto my-4 w-full border-zinc-300"></hr>
 
       <div className="space-y-2">
         <h3 className="text-xl font-semibold">Education</h3>

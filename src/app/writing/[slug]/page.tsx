@@ -14,11 +14,11 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const { mdxSource, frontMatter } = await getFileBySlug(
-    decodeURIComponent(params.slug)
+    decodeURIComponent(params.slug),
   )
   return (
     <section className="mx-auto w-full max-w-2xl space-y-4">
-      <article className="prose prose-zinc">
+      <article className="prose prose-sm prose-zinc w-full max-w-none">
         <CustomMDX source={mdxSource} />
       </article>
     </section>
