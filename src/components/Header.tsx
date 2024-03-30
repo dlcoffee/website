@@ -6,7 +6,7 @@ import {
   EnvelopeClosedIcon,
 } from '@radix-ui/react-icons'
 
-import UnderlinedLink from './UnderlinedLink'
+import UnderlinedNextLink from './UnderlinedNextLink'
 
 export default function Header() {
   return (
@@ -17,22 +17,29 @@ export default function Header() {
         <nav className="my-2">
           <ul className="flex space-x-2 align-middle">
             <li>
-              <a href="#">
+              <a href="https://github.com/dlcoffee" title="github">
                 <GitHubLogoIcon />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="https://twitter.com/_dlcoffee" title="twitter">
                 <TwitterLogoIcon />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a
+                href="https://linkedin.com/in/daniel-tea-1ab14697"
+                title="linkedin"
+              >
                 <LinkedInLogoIcon />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a
+                href="
+                mailto:daniel.l.tea@gmail.com"
+                title="email"
+              >
                 <EnvelopeClosedIcon />
               </a>
             </li>
@@ -42,10 +49,10 @@ export default function Header() {
         <nav>
           <ul className="flex space-x-1">
             <li>
-              <UnderlinedLink href="/">home</UnderlinedLink>
+              <UnderlinedNextLink href="/">home</UnderlinedNextLink>
             </li>
             <li>
-              <UnderlinedLink href="/writing">writing</UnderlinedLink>
+              <UnderlinedNextLink href="/writing">writing</UnderlinedNextLink>
             </li>
           </ul>
         </nav>

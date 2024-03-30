@@ -1,0 +1,74 @@
+---
+title: 'JavaScript Closures'
+date: '2017-04-07'
+categories: javascript
+---
+
+Contrary to popular belief, a closure is **not** a function. It is a **combination** of an inner function and its reference to its lexical environment (scope). They allow access to an outer function from an inner function.
+
+### What are inner/outer functions?
+
+Inner functions are functions that are defined within another function, called the outer function.
+
+An important characteristic of inner functions is that they have access to the outer function's scope. This means that the inner function can use variables, arguments, etc, of the outer function, even after the outer function has returned.
+
+### Examples
+
+```javascript
+var addTo = function (x) {
+  var addIt = function (y) {
+    return x + y
+  }
+
+  return addIt
+}
+
+var addToFive = addTo(5) // returns a function
+addToFive(1) // returns 6
+
+var addToTen = addTo(10) // returns a function
+addToTen(3) // returns 13
+```
+
+When we call `addTo()`, we create a new scope that has a value for `x`. Along with its inner function, `addIt`, we have a closure.
+
+```javascript
+var createCounter = function () {
+  var count = 0
+
+  var increment = function () {
+    count = count + 1
+  }
+
+  return increment
+}
+
+var counter = createCounter() // return a function
+
+counter() // returns 1
+counter() // returns 2
+```
+
+In this example, we create a counter that increments everytime we call it. We don't have access to the `count` variable, but the inner function `increment`, does. Notice that it keeps its context, although we've only called `createCounter` once.
+
+### Why?
+
+Using closures can give your data privacy. In the second example, we are able to emulate private variables (`count`) by using a closure.
+
+Another reason for using closures is let to allow a user to associate some data in the scope with a function that operates on that data, as seen in the first example.
+
+### ELI5
+
+Imagine there is a small robot called Circle-Maker 2000. All it does is paints circles. Really good circles. The greatest circles. The problem is, Circle-Maker 2000 only has a paintbrush and no paint.
+
+You really want to give your friend Jenny a beautiful painting of a circle, so you get a Circle-Maker 2000 and give it some blue paint (by the way, it can only have one color paint). You fire it up, and bam! A beautiful blue painting for Jenny. If you wanted to create a different colored painting, you would have to get another Circle-Maker 2000 and give it a different color paint.
+
+The Circle-Maker 2000 in this example is an inner function. When you give it an environment (the paint), you create a closure.
+
+##### References
+
+- [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures][mozilla]
+- [http://stackoverflow.com/questions/2728278/what-is-a-practical-use-for-a-closure-in-javascript][stackoverflow]
+
+[mozilla]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+[stackoverflow]: http://stackoverflow.com/questions/2728278/what-is-a-practical-use-for-a-closure-in-javascript
