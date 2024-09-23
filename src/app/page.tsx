@@ -78,8 +78,8 @@ export default function Home() {
           >
             one piece
           </UnderlinedLink>
-          , chipping away at my video game library, traveling, and just hanging
-          out with my dogs.
+          , chipping away at my video game library, traveling, and hanging out
+          with my dogs.
         </p>
       </div>
 
@@ -96,19 +96,25 @@ export default function Home() {
 
         <WorkExperience
           company="Sony Pictures Entertainment (Toumei Consulting)"
-          title="Consultant"
-          dates="2021 - Present"
+          title="Senior Software Engineer"
+          dates="2022 - Present"
         />
 
         <WorkExperience
-          company="Disney (Toumei Consulting)"
-          title="Consultant"
+          company="Sony Electronics (Toumei Consulting)"
+          title="Senior Software Engineer"
+          dates="2022 - 2022"
+        />
+
+        <WorkExperience
+          company="Disney Studios (Toumei Consulting)"
+          title="Software Engineer"
           dates="2018 - 2021"
         />
 
         <WorkExperience
           company="ONEHOPE Wine"
-          title="Software Engineer"
+          title="Frontend Engineer"
           dates="2017 - 2018"
         />
 
