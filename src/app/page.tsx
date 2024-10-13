@@ -97,7 +97,7 @@ export default function Home() {
         <WorkExperience
           company="Sony Pictures Entertainment (Toumei Consulting)"
           title="Senior Software Engineer"
-          dates="2022 - Present"
+          dates="2022 - 2024"
         />
 
         <WorkExperience
