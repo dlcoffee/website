@@ -1,10 +1,11 @@
 import Link from 'next/link'
+
 import {
-  GitHubLogoIcon,
-  TwitterLogoIcon,
-  LinkedInLogoIcon,
-  EnvelopeClosedIcon,
-} from '@radix-ui/react-icons'
+  RiBlueskyFill,
+  RiGithubFill,
+  RiLinkedinBoxFill,
+  RiMailFill,
+} from 'react-icons/ri'
 
 import UnderlinedNextLink from './UnderlinedNextLink'
 
@@ -18,12 +19,12 @@ export default function Header() {
           <ul className="flex space-x-2 align-middle">
             <li>
               <a href="https://github.com/dlcoffee" title="github">
-                <GitHubLogoIcon />
+                <RiGithubFill />
               </a>
             </li>
             <li>
-              <a href="https://twitter.com/_dlcoffee" title="twitter">
-                <TwitterLogoIcon />
+              <a href="https://bsky.app/profile/danieltea.com" title="bluesky">
+                <RiBlueskyFill />
               </a>
             </li>
             <li>
@@ -31,7 +32,7 @@ export default function Header() {
                 href="https://linkedin.com/in/daniel-tea-1ab14697"
                 title="linkedin"
               >
-                <LinkedInLogoIcon />
+                <RiLinkedinBoxFill />
               </a>
             </li>
             <li>
@@ -40,7 +41,7 @@ export default function Header() {
                 mailto:daniel.l.tea@gmail.com"
                 title="email"
               >
-                <EnvelopeClosedIcon />
+                <RiMailFill />
               </a>
             </li>
           </ul>
