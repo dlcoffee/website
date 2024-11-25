@@ -1,0 +1,28 @@
+---
+title: 'speeding up integration tests'
+date: '2024-11-23'
+categories: testing nodejs
+---
+
+Click [here](https://github.com/dlcoffee/db-testing) for an example implementation.
+
+A common setup in when developing locally is to have a "working" database
+that you use for development, and a "test" database that you use for running
+tests.
+
+Running tests typically looks like this:
+1. Run migrations to set up the "test" database to get the database up to date.
+2. Run tests sequentially, each time cleaning up the database before/after runs.
+
+The test suite gets slower over time as more tests are added, since they're run
+sequentially in order to avoid conflicts with the test database between tests.
+You can get by with using mocks or setting up your tests in a way
+that don't conflict with each other, but the downsides are that your tests can
+be unrealistic or brittle based on how you set up the data.
+
+A solution to this is to configure the test suite so that tests are able to
+run in parallel. It's a bit more work, but it can greatly speed up the
+test suite.
+
+The idea is to create a new database per test file, run migrations, and clean it
+up afterward.
