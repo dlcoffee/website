@@ -8,11 +8,12 @@ export async function generateStaticParams() {
   return posts.map((p) => {
     return {
       slug: p.replace(/\.mdx/, ''),
-    }
-  })
+    };
+  });
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const { mdxSource, frontMatter } = await getFileBySlug(
     decodeURIComponent(params.slug),
   )

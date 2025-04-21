@@ -89,9 +89,15 @@ export default function Home() {
         <h3 className="text-xl font-semibold">Work Experience</h3>
 
         <WorkExperience
+          company="Gusto"
+          title="Senior Software Engineer"
+          dates="2025 - Present"
+        />
+
+        <WorkExperience
           company="Toumei Consulting"
           title="Senior Software Engineer"
-          dates="2018 - Present"
+          dates="2018 - 2024"
         />
 
         <WorkExperience
