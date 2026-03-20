@@ -11,12 +11,12 @@ function WorkExperience({
   dates: string
 }) {
   return (
-    <div className="flex justify-between">
-      <div>
+    <div className="flex flex-col gap-1.5 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+      <div className="min-w-0">
         <h4 className="text font-semibold">{company}</h4>
         <p className="font-mono text-xs">{title}</p>
       </div>
-      <div>
+      <div className="self-start pt-0.5 sm:shrink-0 sm:pt-1">
         <Badge>{dates}</Badge>
       </div>
     </div>
@@ -85,7 +85,7 @@ export default function Home() {
 
       <hr className="mx-auto my-4 w-full border-zinc-300"></hr>
 
-      <div className="space-y-2">
+      <div className="space-y-5">
         <h3 className="text-xl font-semibold">Work Experience</h3>
 
         <WorkExperience
@@ -136,8 +136,8 @@ export default function Home() {
       <div className="space-y-2">
         <h3 className="text-xl font-semibold">Education</h3>
 
-        <div className="flex justify-between">
-          <div>
+        <div className="flex flex-col gap-1.5 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+          <div className="min-w-0">
             <h4 className="text font-semibold">
               University of California, Santa Barbara
             </h4>
@@ -145,7 +145,7 @@ export default function Home() {
               Computer Science, B.S., Mathematical Sciences, B.S.
             </p>
           </div>
-          <div>
+          <div className="self-start pt-0.5 sm:shrink-0 sm:pt-1">
             <Badge>2010 - 2014</Badge>
           </div>
         </div>
