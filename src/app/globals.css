@@ -1,18 +1,5 @@
-@config "../../tailwind.config.ts";
-@import "tailwindcss";
-
-:root {
-  --sh-class: #D27E99;
-  --sh-identifier: #D27E99;
-  --sh-sign: #8996a3;
-  --sh-property: #5b9ff3;
-  --sh-entity: #957FB8;
-  --sh-jsxliterals: #6266d1;
-  --sh-string: #00a99a;
-  --sh-keyword: #7E9CD8;
-  --sh-comment: #a19595;
-}
-
+@config '../../tailwind.config.ts';
+@import 'tailwindcss';
 
 @layer base {
   :root {
@@ -84,5 +71,122 @@
   }
   body {
     @apply bg-background text-foreground;
+    transition:
+      background-color 200ms ease,
+      color 200ms ease;
+  }
+}
+
+@layer base {
+  .prose {
+    --tw-prose-body: hsl(var(--foreground));
+    --tw-prose-headings: hsl(var(--foreground));
+    --tw-prose-links: hsl(var(--primary));
+    --tw-prose-bold: hsl(var(--foreground));
+    --tw-prose-counters: hsl(var(--muted-foreground));
+    --tw-prose-bullets: hsl(var(--border));
+    --tw-prose-hr: hsl(var(--border));
+    --tw-prose-quotes: hsl(var(--foreground));
+    --tw-prose-quote-borders: hsl(var(--border));
+    --tw-prose-captions: hsl(var(--muted-foreground));
+    --tw-prose-code: hsl(var(--foreground));
+    --tw-prose-th-borders: hsl(var(--border));
+    --tw-prose-td-borders: hsl(var(--border));
+  }
+
+  .prose code::before,
+  .prose code::after {
+    content: none;
+  }
+
+  .prose .inline-code {
+    border: 1px solid rgb(232 204 215);
+    border-radius: 0.5rem;
+    background: linear-gradient(180deg, rgb(250 244 248), rgb(255 250 252));
+    color: rgb(144 122 169);
+    font-size: 0.9em;
+    font-weight: 600;
+    padding: 0.18rem 0.42rem;
+  }
+
+  .dark .prose .inline-code {
+    border-color: rgb(80 67 90);
+    background: linear-gradient(180deg, rgb(35 33 54), rgb(25 23 36));
+    color: rgb(235 188 186) !important;
+  }
+
+  .code-block {
+    margin: 2rem 0;
+    overflow: hidden;
+    border: 1px solid rgb(232 204 215);
+    border-radius: 1rem;
+    background: linear-gradient(180deg, rgb(250 244 248), rgb(246 241 247));
+    box-shadow:
+      0 18px 50px -30px rgb(66 32 62 / 0.14),
+      inset 0 1px 0 rgb(255 255 255 / 0.75);
+  }
+
+  .dark .code-block {
+    border-color: rgb(80 67 90);
+    background: linear-gradient(180deg, rgb(35 33 54), rgb(25 23 36));
+    box-shadow:
+      0 18px 50px -30px rgb(0 0 0 / 0.65),
+      inset 0 1px 0 rgb(255 255 255 / 0.04);
+  }
+
+  .code-block__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(232 204 215);
+    background: rgb(245 232 239);
+    color: rgb(121 82 102);
+    font-family: var(
+      --font-geist-mono,
+      ui-monospace,
+      SFMono-Regular,
+      monospace
+    );
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    padding: 0.8rem 1rem;
+    text-transform: uppercase;
+  }
+
+  .dark .code-block__header {
+    border-bottom-color: rgb(80 67 90);
+    background: rgb(43 39 63);
+    color: rgb(235 188 186);
+  }
+
+  .code-block :where(pre, code, .shiki) {
+    margin: 0;
+    background: transparent !important;
+  }
+
+  .code-block .shiki {
+    overflow-x: auto;
+    padding: 1.1rem 1.25rem 1.35rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .code-block .shiki span {
+    color: var(--shiki-light) !important;
+  }
+
+  .dark .code-block .shiki span {
+    color: var(--shiki-dark) !important;
+  }
+
+  .code-block .shiki code {
+    display: block;
+    min-width: 100%;
+    font-family: var(
+      --font-geist-mono,
+      ui-monospace,
+      SFMono-Regular,
+      monospace
+    );
   }
 }

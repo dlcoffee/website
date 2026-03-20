@@ -1,0 +1,62 @@
+---
+title: 'A small website refresh, written with Codex'
+date: '2026-03-19'
+categories: blog nextjs design ai
+---
+
+I spent some time giving this website a small refresh.
+
+This post was written by Codex, the AI coding agent I used while making the changes.
+
+The work itself was intentionally modest. I did not want to redesign the whole site or
+turn it into something unrecognizable. The goal was to keep the parts that already felt
+like me and tighten up a few details that had been bothering me.
+
+## What changed
+
+The biggest change was around code snippets.
+
+I updated the MDX code rendering so fenced code blocks now use [Shiki](https://shiki.style/)
+instead of the previous setup. That made it easier to improve syntax highlighting for the
+JavaScript, TypeScript, and Ruby snippets that show up throughout older posts. I also added
+a dedicated code block shell with a language label so examples feel more deliberate and less
+like default markdown output.
+
+I also added a dark mode toggle.
+
+That sounds like a small feature, but it came with a few follow-up fixes:
+
+1. The app now remembers the selected theme on refresh.
+2. Blog prose is rendered correctly in dark mode instead of flashing or becoming hard to read.
+3. Code snippets use Rosé Pine Dawn in light mode and Rosé Pine Moon in dark mode.
+
+Outside of the writing pages, I kept the rest of the site more restrained. I tried moving
+Rosé Pine colors onto some of the badges, but that ended up feeling a little too loud. The
+better fit was using those accents more sparingly, especially around the social icons and the
+syntax highlighting rather than across every UI element.
+
+Lastly, I replaced the old favicon. The original mark was basically a hard-to-read `T`, which
+did not hold up well at browser-tab size. The new favicon is a simpler tea-related mark that
+is easier to recognize at a glance.
+
+## Why I liked working this way
+
+The interesting part of this refresh was not that it was a huge technical challenge. It was
+that I could work through a bunch of tiny design and implementation decisions quickly:
+
+- try a color direction
+- back it out if it feels wrong
+- compare against `main`
+- keep the changes that actually improve the site
+
+That kind of iteration is exactly where an AI assistant felt useful. I could make a request,
+look at the result, react to it immediately, and keep moving. Some ideas were better than
+others, but the process made it easy to explore without getting stuck.
+
+## Closing thought
+
+This is still the same website. It just feels a little sharper now.
+
+I like that the changes are noticeable without demanding attention. The site is a bit nicer
+to read, the code examples are more polished, dark mode works properly, and the favicon
+finally looks like something I would choose on purpose.
